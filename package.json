@@ -1,0 +1,50 @@
+{
+  "name": "restifizer-files",
+  "version": "0.0.1",
+  "description": "Restful File service with mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedi/restifizer-files.git"
+  },
+  "keywords": [
+    "node.js",
+    "rest",
+    "restful",
+    "express",
+    "mongo",
+    "mongodb",
+    "gridfs",
+    "mongoose",
+    "upload",
+    "download",
+    "files"
+  ],
+  "dependencies": {
+    "bluebird": "~2.8.0",
+    "http-statuses": "~0.1.x",
+    "lodash": "~2.4.1",
+    "mmmagic": "~0.3.12",
+    "mongoose": "~3.8.21"
+  },
+  "author": {
+    "name": "Fedor Shubin"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/vedi/restifizer-files/issues"
+  },
+  "homepage": "https://github.com/vedi/restifizer-files",
+  "_id": "restifizer-files@0.0.1",
+  "dist": {
+    "shasum": "1297c801b1c7ea120e29ddf9a347afc4201bcdc6"
+  },
+  "_from": "restifizer-files@^0.0.1",
+  "_resolved": "https://registry.npmjs.org/restifizer-files/-/restifizer-files-0.0.1.tgz",
+  "gitHead": "852ab862040ac55560b3695b26b3c66b32ca0733",
+  "_shasum": "8c05f19d98e6e9e903f938a162b4c8be2a3f0d05"
+}
