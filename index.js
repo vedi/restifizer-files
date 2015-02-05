@@ -6,9 +6,6 @@ var
 function RestifizerFiles(app, options) {
   this.app = app;
   this.restifizerOptions = options || {};
-  if (!this.restifizerOptions.config) {
-    this.restifizerOptions.config = {defaultPerPage: 25, maxPerPage: 100};
-  }
 }
 
 RestifizerFiles.prototype.createController = function (Controller) {
