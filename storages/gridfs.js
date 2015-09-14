@@ -11,7 +11,7 @@ var
 module.exports = {
 
   initialize: function(options) {
-    this.db = options.ModelClass.db.db;
+    this.db = options.dataSource.ModelClass.db.db;
   },
 
   getFileAsync: function (fileMeta) {
