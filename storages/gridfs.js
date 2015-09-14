@@ -9,13 +9,20 @@ var
   ObjectID  = mongoose.mongo.BSONPure.ObjectID;
 
 module.exports = {
-  getFileAsync: function (db, id) {
-    var store = new GridStore(db, new ObjectID(id.toString()), 'r', {root: 'fs'});
+
+  initialize: function(options) {
+    this.db = options.ModelClass.db.db;
+  },
+
+  getFileAsync: function (fileMeta) {
+    var id = fileMeta.fileId;
+    var store = new GridStore(this.db, new ObjectID(id.toString()), 'r', {root: 'fs'});
     Promise.promisifyAll(store);
     return store.openAsync();
   },
-  putFileAsync: function (db, path, options) {
-    var gridStore = Promise.promisifyAll(new GridStore(db, new ObjectID(), 'w', options));
+
+  putFileAsync: function (path, options) {
+    var gridStore = Promise.promisifyAll(new GridStore(this.db, new ObjectID(), 'w', options));
 
     return Promise
       .try(function () {
@@ -32,15 +39,17 @@ module.exports = {
           root: doc.root,
           uploadDate: doc.uploadDate
         };
-      })
-      ;
+      });
   },
-  replaceFileAsync: function (db, id, path, options) {
+
+  replaceFileAsync: function (fileMeta, path, options) {
+    var id = fileMeta.fileId;
+
     return Promise
       .try(function () {
         options = options || {};
         options.root = 'fs';
-        var store = Promise.promisifyAll(new GridStore(db, id, 'w', options));
+        var store = Promise.promisifyAll(new GridStore(this.db, id, 'w', options));
         return store.openAsync();
       })
       .then(function (store) {
@@ -60,7 +69,9 @@ module.exports = {
       })
       ;
   },
-  deleteFileAsync: function (db, id) {
-    return GridStore.unlinkAsync(db, id);
+
+  deleteFileAsync: function (fileMeta) {
+    var id = fileMeta.fileId;
+    return GridStore.unlinkAsync(this.db, id);
   }
 };
