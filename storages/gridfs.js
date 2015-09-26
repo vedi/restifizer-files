@@ -44,12 +44,13 @@ module.exports = {
 
   replaceFileAsync: function (fileMeta, path, options) {
     var id = fileMeta.fileId;
+    var _this = this;
 
     return Promise
       .try(function () {
         options = options || {};
         options.root = 'fs';
-        var store = Promise.promisifyAll(new GridStore(this.db, id, 'w', options));
+        var store = Promise.promisifyAll(new GridStore(_this.db, id, 'w', options));
         return store.openAsync();
       })
       .then(function (store) {
