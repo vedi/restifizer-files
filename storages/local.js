@@ -12,7 +12,6 @@ module.exports = {
 
   initialize: function(options) {
     this.uploadPath = options.uploadPath + '/';
-    this.db = options.ModelClass.db.db;
   },
 
   getFileAsync: function (fileMeta) {
