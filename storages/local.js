@@ -26,8 +26,7 @@ module.exports = {
   },
 
   putFileAsync: function (path, options) {
-    var buf = crypto.randomBytes(64);
-    var fileName = this.uploadPath + buf.toString('hex') + '.' + pathM.extname();
+    var fileName = this.uploadPath + '/' + this.generateFileName() + '.' + pathM.extname();
 
     return fs.moveAsync(path, this.uploadRoot + fileName)
       .then(function () {
@@ -46,6 +45,11 @@ module.exports = {
   deleteFileAsync: function (fileMeta) {
     var fileName = this.uploadRoot + fileMeta;
     return fs.unlinkAsync(fileName);
+  },
+
+  generateFileName: function() {
+    var buf = crypto.randomBytes(32);
+    return buf.toString('hex');
   }
 
 };
