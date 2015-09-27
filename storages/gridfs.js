@@ -14,11 +14,13 @@ module.exports = {
     this.db = options.dataSource.ModelClass.db.db;
   },
 
-  getFileAsync: function (fileMeta) {
+  getStreamAsync: function (fileMeta) {
     var id = fileMeta.fileId;
     var store = new GridStore(this.db, new ObjectID(id.toString()), 'r', {root: 'fs'});
     Promise.promisifyAll(store);
-    return store.openAsync();
+    return store.openAsync().then(function (db) {
+      return db.stream(true);
+    });
   },
 
   putFileAsync: function (path, options) {
