@@ -46,7 +46,8 @@ module.exports = {
     var id = fileMeta.fileId;
 
     return Promise
-      .try(function () {
+      .bind(this)
+      .then(function () {
         options = options || {};
         options.root = 'fs';
         var store = Promise.promisifyAll(new GridStore(this.db, id, 'w', options));

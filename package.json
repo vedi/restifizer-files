@@ -1,6 +1,6 @@
 {
   "name": "restifizer-files",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Restful File service with mongodb",
   "main": "index.js",
   "scripts": {
