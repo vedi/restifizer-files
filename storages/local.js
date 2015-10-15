@@ -26,7 +26,7 @@ module.exports = {
   },
 
   putFileAsync: function (path, options) {
-    var fileName = this.uploadPath + '/' + this.generateFileName() + '.' + pathM.extname();
+    var fileName = this.uploadPath + '/' + this.generateFileName() + pathM.extname(path);
 
     return fs.moveAsync(path, this.uploadRoot + fileName)
       .then(function () {
