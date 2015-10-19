@@ -19,7 +19,10 @@ module.exports = {
     var store = new GridStore(this.db, new ObjectID(id.toString()), 'r', {root: 'fs'});
     Promise.promisifyAll(store);
     return store.openAsync().then(function (db) {
-      return db.stream(true);
+      return {
+        contentType: fileMeta.contentType,
+        stream: db.stream(true)
+      };
     });
   },
 

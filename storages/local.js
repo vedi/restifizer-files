@@ -7,6 +7,7 @@ var
   fs = Promise.promisifyAll(require('fs-extra')),
   pathM = require('path'),
   crypto = require('crypto'),
+  mmm = require('mmmagic'),
   utils = require('../lib/utils'),
   requireOptions = utils.requireOptions;
 
@@ -22,7 +23,24 @@ module.exports = {
 
   getStreamAsync: function (fileMeta) {
     var fileName = this.uploadRoot + fileMeta;
-    return fs.createReadStream(fileName);
+
+    var magic = Promise.promisifyAll(new mmm.Magic(mmm.MAGIC_MIME_TYPE));
+
+    return Promise.
+      all([
+        fs.statAsync(fileName),
+        magic.detectFileAsync(fileName)
+      ]).
+      spread(function (stats, mimeType) {
+        var fileSizeInBytes = stats['size'];
+
+        return {
+          contentLength: fileSizeInBytes,
+          contentType: mimeType,
+          stream: fs.createReadStream(fileName)
+        };
+      });
+
   },
 
   putFileAsync: function (path, options) {
