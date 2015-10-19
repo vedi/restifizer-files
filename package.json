@@ -24,10 +24,10 @@
     "files"
   ],
   "dependencies": {
-    "bluebird": "~2.8.0",
+    "bluebird": "~2.10.2",
     "http-statuses": "~0.1.x",
-    "lodash": "~2.4.1",
-    "mmmagic": "~0.3.12"
+    "lodash": "~3.10.1",
+    "mmmagic": "~0.4.1"
   },
   "devDependencies": {
     "fs-extra": "^0.24.0",
