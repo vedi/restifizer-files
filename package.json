@@ -4,7 +4,10 @@
   "description": "Restful File service with mongodb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test-migrate && npm run test-app | npm run test-cucumber",
+    "test-migrate": "node ./test/lib/migrations/mongo.js",
+    "test-app": "node ./test/lib/app/server.js",
+    "test-cucumber": "cd ./test && echo \"Wait 5 seconds (test server starting)...\" && sleep 5 && cucumber.js"
   },
   "repository": {
     "type": "git",
@@ -30,8 +33,16 @@
     "mmmagic": "~0.4.1"
   },
   "devDependencies": {
+    "body-parser": "~1.9.0",
+    "chai": "^3.2.0",
+    "connect-multiparty": "^2.0.0",
+    "cucumber": "^0.6.0",
+    "express": "~4.9.5",
     "fs-extra": "^0.24.0",
-    "mongoose": "~3.8.21"
+    "mongoose": "~3.8.21",
+    "request": "^2.64.0",
+    "restifizer": "^0.4.18",
+    "restifizer-mongoose-ds": "^0.0.6"
   },
   "author": {
     "name": "Fedor Shubin"
