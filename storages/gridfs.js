@@ -6,7 +6,7 @@ var
   Promise = require('bluebird'),
   mongoose  = require('mongoose'),
   GridStore = Promise.promisifyAll(mongoose.mongo.GridStore),
-  ObjectID  = mongoose.mongo.BSONPure.ObjectID;
+  ObjectID  = mongoose.mongo.ObjectID;
 
 module.exports = {
 
