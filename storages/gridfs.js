@@ -21,6 +21,7 @@ module.exports = {
     return store.openAsync().then(function (db) {
       return {
         contentType: fileMeta.contentType,
+        contentLength: db.stream(true).totalBytesToRead,
         stream: db.stream(true)
       };
     });
