@@ -1,12 +1,13 @@
-'use strict';
 /**
  * Created by vedi on 11/21/13.
  */
-var
-  Promise = require('bluebird'),
-  mongoose  = require('mongoose'),
-  GridStore = Promise.promisifyAll(mongoose.mongo.GridStore),
-  ObjectID  = mongoose.mongo.ObjectID;
+'use strict';
+
+const Promise = require('bluebird');
+const mongoose = require('mongoose');
+
+const GridStore = Promise.promisifyAll(mongoose.mongo.GridStore);
+const ObjectID = mongoose.mongo.ObjectID;
 
 module.exports = {
 
@@ -14,7 +15,7 @@ module.exports = {
     this.db = options.dataSource.ModelClass.db.db;
   },
 
-  getStreamAsync: function (fileMeta) {
+  getStream: function (fileMeta) {
     var id = fileMeta.fileId;
     var store = new GridStore(this.db, new ObjectID(id.toString()), 'r', {root: 'fs'});
     Promise.promisifyAll(store);
@@ -27,7 +28,7 @@ module.exports = {
     });
   },
 
-  putFileAsync: function (path, options) {
+  putFile: function (path, options) {
     var gridStore = Promise.promisifyAll(new GridStore(this.db, new ObjectID(), 'w', options));
 
     return Promise
@@ -48,7 +49,7 @@ module.exports = {
       });
   },
 
-  replaceFileAsync: function (fileMeta, path, options) {
+  replaceFile: function (fileMeta, path, options) {
     var id = fileMeta.fileId;
 
     return Promise
@@ -77,7 +78,7 @@ module.exports = {
       ;
   },
 
-  deleteFileAsync: function (fileMeta) {
+  deleteFile: function (fileMeta) {
     var id = fileMeta.fileId;
     return GridStore.unlinkAsync(this.db, id);
   }

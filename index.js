@@ -1,26 +1,28 @@
 'use strict';
-var
-  RestifizerFileFieldController = require("./lib/restifizer-files");
 
+const RestifizerFileFieldController = require('./lib/restifizer-files');
 
-function RestifizerFiles(app, options) {
-  this.app = app;
-  this.restifizerOptions = options || {};
+class RestifizerFiles {
+  constructor(app, options) {
+    this.app = app;
+    this.restifizerOptions = options || {};
+  }
+
+  createController(Controller) {
+    return new Controller(this.restifizerOptions);
+  }
+
+  addController(Controller) {
+    this.bind(this.createController(Controller));
+    return this;
+  }
+
+  bind(controller) {
+    controller.bind(this.app);
+    return this;
+  }
 }
 
-RestifizerFiles.prototype.createController = function (Controller) {
-  return new Controller(this.restifizerOptions);
-};
-
-RestifizerFiles.prototype.addController = function (Controller) {
-  this.bind(this.createController(Controller));
-  return this;
-};
-
-RestifizerFiles.prototype.bind = function (controller) {
-  controller.bind(this.app);
-  return this;
-};
 
 RestifizerFiles.Controller = RestifizerFileFieldController;
 
