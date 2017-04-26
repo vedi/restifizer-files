@@ -67,7 +67,8 @@ class Storage {
   getStream(fileMeta) {
     const vals = {};
     const fileName = fileMeta.fileName;
-    return this._connect()
+    return this
+      ._connect()
       .then(() => client.sizeAsync(this._fullRemoteFileName(fileName)))
       .then((size) => {
         vals.size = size;
@@ -96,7 +97,8 @@ class Storage {
   }
 
   putFile(frompath) {
-    this._connect()
+    return this
+      ._connect()
       .then(() => new Bb((resolve, reject) => {
         client.put(frompath, this._fullRemoteFileName(path.basename(frompath)),
           (err) => {
@@ -127,13 +129,14 @@ class Storage {
   }
 
   deleteFile(fileMeta) {
-    return this._connect()
+    return this
+      ._connect()
       .then(() => Bb.fromCallback((callback) => {
-        client.delete(this._fullRemoteFileName(fileMeta.fileName), (err) => {
-          client.end();
-          callback(err, this._fullRemoteFileName(fileMeta.fileName));
-        });
-      }));
+        client.delete(this._fullRemoteFileName(fileMeta.fileName), callback);
+      }))
+      .finally(() => {
+        client.end();
+      });
   }
 }
 
