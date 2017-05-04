@@ -2,26 +2,26 @@
  * Created by igor on 09.10.15.
  */
 
-var mongoose = require('mongoose');
-var Snapshot = require('../app/models/snapshot');
-var Photo = require('../app/models/photo');
-var dataToMigrate = require('../dal').files;
-var config = require('../app/config').mongoose;
+const mongoose = require('mongoose');
+const Snapshot = require('../app/models/snapshot');
+const Photo = require('../app/models/photo');
+const dataToMigrate = require('../dal').files;
+const config = require('../app/config').mongoose;
 
-mongoose.connect(config.connectionString, function (err) {
+mongoose.connect(config.connectionString, (err) => {
+  if (err) {
+    return console.log('Cannot connect to MongoDB. Error: ', err);
+  }
+  (new Snapshot(dataToMigrate.testFile.snapshot)).save((err) => {
     if (err) {
-        return console.log('Cannot connect to MongoDB. Error: ', err);
+      return console.log('Migration. Error: ', err);
     }
-    (new Snapshot(dataToMigrate.testFile.snapshot)).save(function (err) {
-        if (err) {
-            return console.log('Migration. Error: ', err);
-        }
-        (new Photo(dataToMigrate.testFileLocal.photo)).save(function (err) {
-            if (err) {
-                return console.log('Migration. Error: ', err);
-            }
-            console.log('Migration successfully completed');
-            mongoose.connection.close();
-        });
+    (new Photo(dataToMigrate.testFileLocal.photo)).save((err) => {
+      if (err) {
+        return console.log('Migration. Error: ', err);
+      }
+      console.log('Migration successfully completed');
+      mongoose.connection.close();
     });
+  });
 });

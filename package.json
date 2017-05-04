@@ -1,7 +1,7 @@
 {
   "name": "restifizer-files",
-  "version": "0.4.0",
-  "description": "Restful File service with mongodb",
+  "version": "0.5.0",
+  "description": "Restful File service with different store engines and DB integrations",
   "main": "index.js",
   "scripts": {
     "test": "npm run test-migrate && npm run test-app | npm run test-cucumber",
@@ -27,26 +27,29 @@
     "files"
   ],
   "dependencies": {
-    "bluebird": "^3.4.1",
-    "http-statuses": "^0.1.1",
-    "lodash": "^3.10.1",
+    "bluebird": "^3.5.0",
+    "http-statuses": "^0.2.0",
+    "lodash": "^4.17.4",
     "mmmagic": "~0.4.1",
-    "mime-types": "^2.1.15"
+    "mime-types": "^2.1.15",
+    "restifizer-mongoose-ds": "^0.1.10",
+    "restifizer-sequelize-ds": "^0.2.4"
   },
   "devDependencies": {
     "body-parser": "~1.9.0",
     "chai": "^3.2.0",
     "connect-multiparty": "^2.0.0",
-    "cucumber": "^0.6.0",
+    "cucumber": "^1.2.0",
     "express": "~4.9.5",
     "fs-extra": "^0.24.0",
-    "mongoose": "~3.8.21",
     "request": "^2.64.0",
-    "restifizer": "^0.4.18",
-    "restifizer-mongoose-ds": "^0.0.6",
+    "restifizer": "^0.8.21",
     "eslint": "3.12.2",
     "eslint-config-airbnb-base": "11.0.0",
     "eslint-plugin-import": "2.2.0"
+  },
+  "peerDependencies": {
+    "mongoose": "4.x"
   },
   "author": {
     "name": "Fedor Shubin"
