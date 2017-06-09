@@ -27,7 +27,7 @@
     "bluebird": "~2.8.0",
     "http-statuses": "~0.1.x",
     "lodash": "~2.4.1",
-    "mmmagic": "~0.3.12",
+    "mmmagic": "~0.4.1",
     "mongoose": "~3.8.21"
   },
   "author": {
