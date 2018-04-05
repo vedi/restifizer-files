@@ -1,6 +1,6 @@
 {
   "name": "restifizer-files",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "Restful File service with different store engines and DB integrations",
   "main": "index.js",
   "scripts": {
