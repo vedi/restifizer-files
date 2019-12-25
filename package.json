@@ -31,7 +31,7 @@
     "fs-extra": "^0.24.0",
     "http-statuses": "^0.2.0",
     "lodash": "^4.17.4",
-    "mmmagic": "~0.4.1",
+    "mmmagic": "0.5.3",
     "mime-types": "^2.1.15",
     "restifizer-mongoose-ds": "^0.1.11",
     "restifizer-sequelize-ds": "^0.2.4"
