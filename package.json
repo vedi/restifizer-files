@@ -1,6 +1,6 @@
 {
   "name": "restifizer-files",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "Restful File service with different store engines and DB integrations",
   "main": "index.js",
   "scripts": {
@@ -31,8 +31,8 @@
     "fs-extra": "^0.24.0",
     "http-statuses": "^0.2.0",
     "lodash": "^4.17.15",
-    "mmmagic": "~0.5.3",
     "mime-types": "^2.1.26",
+    "mmmagic": "~0.5.3",
     "restifizer-mongoose-ds": "^0.1.12",
     "restifizer-sequelize-ds": "^0.2.4"
   },
@@ -41,13 +41,13 @@
     "chai": "^3.2.0",
     "connect-multiparty": "^2.0.0",
     "cucumber": "^1.2.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.1",
     "express": "~4.17.1",
     "mongoose": "~5.9.4",
     "request": "^2.64.0",
-    "restifizer": "^0.8.21",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "2.20.1"
+    "restifizer": "^0.8.21"
   },
   "peerDependencies": {
     "mongoose": "4.x"
