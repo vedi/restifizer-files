@@ -27,26 +27,27 @@
     "files"
   ],
   "dependencies": {
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.7.2",
     "fs-extra": "^0.24.0",
     "http-statuses": "^0.2.0",
-    "lodash": "^4.17.4",
-    "mmmagic": "~0.4.1",
-    "mime-types": "^2.1.15",
-    "restifizer-mongoose-ds": "^0.1.11",
+    "lodash": "^4.17.15",
+    "mmmagic": "~0.5.3",
+    "mime-types": "^2.1.26",
+    "restifizer-mongoose-ds": "^0.1.12",
     "restifizer-sequelize-ds": "^0.2.4"
   },
   "devDependencies": {
-    "body-parser": "~1.9.0",
+    "body-parser": "~1.19.0",
     "chai": "^3.2.0",
     "connect-multiparty": "^2.0.0",
     "cucumber": "^1.2.0",
-    "express": "~4.9.5",
+    "express": "~4.17.1",
+    "mongoose": "~5.9.4",
     "request": "^2.64.0",
     "restifizer": "^0.8.21",
-    "eslint": "3.12.2",
-    "eslint-config-airbnb-base": "11.0.0",
-    "eslint-plugin-import": "2.2.0"
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.1"
   },
   "peerDependencies": {
     "mongoose": "4.x"
